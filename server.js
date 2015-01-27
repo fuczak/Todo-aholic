@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');	//pull info from HTML POST
 var methodOverride = require('method-override');	//simulate DELETE and PUT
 
 //configuration
-mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uw03mypu'); //connect to mongoDB databse on modulus.info
+mongoose.connect('mongodb://todo:todo12@ds053728.mongolab.com:53728/todo-database'); //connect to mongoDB databse on modulus.info
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));	//log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));	//parse application/x-www-form-urlencoded
@@ -18,7 +18,7 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); //parse applicat
 app.use(methodOverride());
 
 //define todo model
-vat Todo = mongoose.model('Todo', {
+var Todo = mongoose.model('Todo', {
 	text : String
 });
 

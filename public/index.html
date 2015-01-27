@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Node/Angular Todo App</title>
 	<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="main.css">
 	<style>
 		html {overflow-y:scroll;}
 		body {padding-top:50px;}
@@ -13,21 +14,21 @@
 	</style>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-	<script type="text/javascript" src="core.js"></script>
+	<script type="text/javascript" src="/core.js"></script>
 </head>
 <body ng-controller="mainController">
 <div class="container">
 	<!-- Header and todos count -->
 	<div class="jumbotron text-center">
-		<h1>I'm a Todo-aholic <span class="label label-info">{{ todos.length }}</span></h1>
+		<h1>Tyle rzeczy do zrobienia <span class="label label-info">{{ todos.length }}</span></h1>
 	</div>
 	<!-- Todo list -->
 	<div id="todo-list" class="row">
-		<div class="col-sm-4 col-sm-offset-4">
+		<div class="col-sm-8 col-sm-offset-2">
 			<!-- Loop over todos -->
 			<div class="checkbox" ng-repeat="todo in todos">
 				<label>
-					<input type="checkbox" ng-click="deleteTodo(todo._id)">{{ todo.text}}
+					<input type="checkbox" class="checkbox-input" ng-click="deleteTodo(todo._id)">{{ todo.text }}
 				</label>
 			</div>
 		</div>
@@ -38,9 +39,9 @@
 			<form>
 				<div class="form-group">
 					<!-- Bind this value to formData.text in Angular -->
-					<input type="text" class="form-control input-lg text-center" placeholder="I want to buy a puppy that will love me forever" ng-mode="formData.text">
+					<input type="text" class="form-control input-lg text-center" placeholder="Trzeba iść do Biedronki na zakupy" ng-model="formData.text">
 				</div>
-				<button class="btn btn-primary btn-lg" type="submit" ng-click="createTodo()">Add</button>
+				<button class="btn btn-primary btn-lg" type="submit" ng-click="createTodo()">Dodaj</button>
 			</form>
 		</div>
 	</div>

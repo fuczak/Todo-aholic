@@ -9,7 +9,7 @@ var bodyParser = require('body-parser');	//pull info from HTML POST
 var methodOverride = require('method-override');	//simulate DELETE and PUT
 
 //configuration
-mongoose.connect('mongodb://todo:todo12@ds053728.mongolab.com:53728/todo-database'); //connect to mongoDB databse on modulus.info
+mongoose.connect('mongodb://todo:todo12@ds053728.mongolab.com:53728/todo-database'); //connect to mongoDB databse on mongolab
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('dev'));	//log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));	//parse application/x-www-form-urlencoded
@@ -38,11 +38,11 @@ var Todo = mongoose.model('Todo', {
 		Todo.create({
 			text : req.body.text,
 			done : false
-		}, function (err, todo) {
+		}, function (err, todo) {			
 			if(err)
 				res.send(err);
 			//get and return all the todos after creating one
-			Todo.find(function (err, todos) {
+			Todo.find(function (err, todos) {				
 				if(err)
 					res.send(err)
 				res.json(todos);
@@ -50,14 +50,14 @@ var Todo = mongoose.model('Todo', {
 		});
 	});
 	//delete a todo
-	app.delete('/api/todos/:todo_is', function (req, res) {
+	app.delete('/api/todos/:todo_id', function (req, res) {
 		Todo.remove({
 			_id : req.params.todo_id
-		}, function (err, todo) {
+		}, function (err, todo) {			
 			if(err)
 				res.sens(err);
 			//get and return all the todos after deleting one
-			Todo.find(function (err, todos) {
+			Todo.find(function (err, todos) {				
 				if(err)
 					res.send(err)
 				res.json(todos);
